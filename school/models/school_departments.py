@@ -1,0 +1,14 @@
+from django.db import models
+from common.models.base_model import BaseModel
+from school.models.school_model import School
+
+
+class SchoolDepartments(BaseModel):
+    school = models.ForeignKey(School, models.CASCADE)
+    department_name = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=True)
+    is_active = models.BooleanField(default=True)
+
+    class Meta:
+        db_table = "school_departments"
+        ordering = ['-created_at']
